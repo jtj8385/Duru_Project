@@ -4,7 +4,7 @@
     <insert id="tJoin" parameterType="TaxMemberDto">
         INSERT INTO taxmemberinfo
         VALUES (#{tid}, #{tpwd}, #{tcom_name}, #{tname}, #{carnum},
-                #{tphone_num}, #{tbus_num}, #{tcar_kind})
+                #{tphone_num}, #{tbus_num}, #{tcar_kind}, #{status})
     </insert>
 
     <update id="taxMemberPwUpdate" parameterType="String">

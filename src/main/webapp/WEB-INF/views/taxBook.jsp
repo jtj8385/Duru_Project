@@ -144,11 +144,13 @@
       display: block;
     }
     #carType1{
-      font-size: 20px;
+      font-size: 17px;
+      font-weight: lighter;
       margin-left: 200px;
     }
     #carType2{
-      font-size: 20px;
+      font-size: 17px;
+      font-weight: lighter;
       margin-left: 50px;
     }
     #carTypeContainer{
