@@ -49,4 +49,6 @@ public interface TaxMemberDao {
 
     //택시 운행완료후 택시 예약 정보 삭제
     void delTBookInfo(String tid);
+
+    int taxBookCount(String uid);
 }

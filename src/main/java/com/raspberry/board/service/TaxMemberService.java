@@ -173,4 +173,8 @@ public class TaxMemberService {
         log.info("delTBookInfo()");
         tDao.delTBookInfo(tid);
     }
+
+    public int taxBookCount(String uid) {
+        return tDao.taxBookCount(uid);
+    }
 }

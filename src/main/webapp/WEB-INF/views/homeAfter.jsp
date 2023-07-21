@@ -31,37 +31,37 @@
   <div id="box1">
     <ul>
       <li>
-        <a href="resList" onclick="checkLogin('')">
+        <a href="resList">
           <span id="quick-icon1"></span>
           <p>음식점</p>
         </a>
       </li>
       <li>
-        <a href="taxBook" onclick="checkLogin('')">
+        <a onclick="checkTaxiCount('${uid}')">
           <span id="quick-icon2"></span>
           <p>택시</p>
         </a>
       </li>
       <li>
-        <a href="#" onclick="checkLogin('')">
+        <a href="#">
           <span id="quick-icon3"></span>
           <p>프로그램</p>
         </a>
       </li>
       <li>
-        <a href="resCheck" onclick="checkLogin('')">
+        <a href="resCheck">
           <span id="quick-icon4"></span>
           <p>음식점 예약 목록</p>
         </a>
       </li>
       <li>
-        <a href="taxCheck" onclick="checkLogin('')">
+        <a href="taxCheck">
           <span id="quick-icon5"></span>
           <p>택시 호출 현황</p>
         </a>
       </li>
       <li>
-        <a href="#" onclick="checkLogin('')">
+        <a href="#">
           <span id="quick-icon6"></span>
           <p>프로그램 신청 목록</p>
         </a>
@@ -127,4 +127,25 @@
 <jsp:include page="footer.jsp"></jsp:include>
 
 </body>
+<script>
+  function checkTaxiCount(uid){
+    $.ajax({
+      url: 'checkTaxBook',
+      method: 'GET',
+      data: {uid : uid},
+      success: function (count){
+        if (count === 0){
+          //데이터가 없으면 taxBook페이지로 이동
+          window.location.href = 'taxBook';
+        } else {
+          //데이터가 있으면 경고창 띄우기
+          alert("이미 택시를 호출하였습니다.");
+        }
+      },
+      error: function (){
+        console('요청 실패');
+      }
+    });
+  }
+</script>
 </html>

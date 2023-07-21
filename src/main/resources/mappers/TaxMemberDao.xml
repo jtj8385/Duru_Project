@@ -63,4 +63,8 @@
         SELECT count(*) FROM taxmemberinfo WHERE tid=#{tid} AND tname=#{tname} AND tphone_num=#{tphone_num}
     </select>
 
+    <select id="taxBookCount" resultType="Integer">
+        SELECT COUNT(*) AS count FROM TaxBookInfo WHERE uid = #{uid};
+    </select>
+
 </mapper>

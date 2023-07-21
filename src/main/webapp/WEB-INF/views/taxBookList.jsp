@@ -146,6 +146,17 @@
     #dFinish:hover{
       background-color: #4a82d6;
     }
+    #backBtn{
+      border: none;
+      width:120px;
+      height: 40px;
+      background-color: #4999e4;
+      color: white;
+      border-radius: 10px;
+    }
+    #backBtn:hover{
+      background-color: #4a82d6;
+    }
     table {
       border-spacing: 1;
       border-collapse: collapse;
@@ -201,7 +212,7 @@
       margin-left: 10px;
     }
     #tbList-bigbox{
-      margin-bottom: 100px;
+      margin-bottom: 150px;
       margin-top: 100px;
     }
 
@@ -271,10 +282,19 @@
       </c:choose>
     </div>
   </div>
+<!-- 버튼 컨테이너는 taxbook 정보가 있을 때만 출력 -->
+<c:if test="${not empty taxInfo}">
   <div class="button-container">
     <button id="accept" onclick="acceptBtn('${taxMember.tid}')">수락</button>
     <button id="dFinish" style="display: none;" onclick="dFinishBtn('${taxMember.tid}')">운행 완료</button>
   </div>
+</c:if>
+  <!-- 버튼 컨테이너가 숨겨졌을 때 (taxInfo가 비어있을 때) 뒤로가기 버튼을 출력 -->
+  <c:if test="${empty taxInfo}">
+    <div class="button-container">
+    <button id="backBtn" onclick="history.back()">뒤로가기</button>
+    </div>
+  </c:if>
 </div>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
@@ -307,6 +327,8 @@
       data: {tid : tid},
       success: function (res){
         console.log(res);
+        alert("운행을 종료합니다.")
+        window.location.href = 'homeBus';
       },
       error: function (err){
         console.log(err);

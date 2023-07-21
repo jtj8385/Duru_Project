@@ -96,5 +96,12 @@ public class TaxController {
         return "homeBus";
     }
 
+    @GetMapping("checkTaxBook")
+    @ResponseBody
+    public int checkTaxBook(@RequestParam("uid") String uid){
+        int count = tServ.taxBookCount(uid);
+        return count;
+    }
+
 }
 

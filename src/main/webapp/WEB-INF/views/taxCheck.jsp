@@ -175,7 +175,7 @@
             text-align: center;
         }
         #tCheck-bigbox{
-            margin-bottom: 100px;
+            margin-bottom: 150px;
             margin-top: 100px;
         }
         .tax-content{
