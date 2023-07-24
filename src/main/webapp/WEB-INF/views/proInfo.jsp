@@ -147,7 +147,7 @@
   <div class="btn-container">
     <a href="proInfoUpdate" class="btn">수정</a>
     <button class="btn" onclick="delCheck('${pmb.pid}')">탈퇴</button>
-    <a href="homeAfter" class="btn">뒤로가기</a>
+    <a href="homeBus" class="btn">뒤로가기</a>
   </div>
 </div>
 </body>

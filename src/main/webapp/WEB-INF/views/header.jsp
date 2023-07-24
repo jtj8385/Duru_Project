@@ -2,7 +2,7 @@
 <div id="container">
     <div id="boxheader">
         <div id="logo">
-            <a href="home">
+            <a>
                 <img src="images/logo.png" width="115" height="100">
             </a>
         </div>

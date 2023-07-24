@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -16,6 +18,119 @@ import java.util.List;
 public class TaxController {
     @Autowired
     private TaxMemberService tServ;
+
+    private ModelAndView mv;
+
+    // 택시 아이디 중복체크
+    @GetMapping("tIdCheck")
+    @ResponseBody           //REST 방식일 때 꼭 넣을 것.
+    public String tIdCheck(String tid){
+        log.info("tIdCheck()");
+        String res = tServ.tIdCheck(tid);
+
+        return res;
+    }
+
+    //택시 회원가입
+    @PostMapping ("taxJoinProc")
+    public String taxJoinProc(TaxMemberDto tmember, RedirectAttributes rttr){
+        log.info("taxJoinProc()");
+        String view = tServ.taxJoin(tmember, rttr);
+
+        return view;
+    }
+
+    //택시 로그인 페이지 이동
+    @GetMapping("taxLogin")
+    public String taxLogin(){
+        log.info("taxLogin()");
+        return "taxLogin";
+    }
+
+    //택시 로그인
+    @PostMapping("tLoginProc")
+    public String tLoginProc(TaxMemberDto tmember,
+                             HttpSession session,
+                             RedirectAttributes rttr){
+        log.info("tLoginProc()");
+        String view = tServ.tLoginProc(tmember,session, rttr);
+
+        return view;
+    }
+
+    //택시 아이디 찾기 페이지 이동
+    @GetMapping("taxFindId")
+    public String taxFindId(){
+        log.info("taxFindId()");
+        return "taxFindId";
+    }
+
+    //택시 아이디 찾기
+    @PostMapping("tFindId")
+    public ModelAndView tFindId(String tname, String tphone_num){
+        log.info("tFindId()");
+        mv = tServ.tFindId3(tname, tphone_num);
+        return mv;
+    }
+
+    //택시 아이디 비번 찾기 페이지 이동
+    @GetMapping("taxFindPwd")
+    public String taxFindPwd(){
+        log.info("taxFindPwd()");
+        return "taxFindPwd";
+    }
+
+    //택시 비번 찾기
+    @GetMapping("taxResetPwd")
+    public String taxResetPwd(String tid, String tname, String tphone_num, Model model) {
+        if (tServ.taxResetPwd3(tid, tname, tphone_num)) {
+            model.addAttribute("tid", tid);
+            return "taxResetPwd";
+        } else {
+            return "redirect:taxFindPwd";
+        }
+    }
+
+    //택시 비밀번호 재설정
+    @PostMapping("taxRePw")
+    public String taxRePw(String tpwd, String tid){
+        log.info("taxRePw");
+        String view = tServ.taxRePw(tpwd, tid);
+
+        return view;
+    }
+
+    //택시 마이페이지 이동
+    @GetMapping("taxInfo")
+    public String taxInfo(){
+        log.info("taxInfo()");
+        return "taxInfo";
+    }
+
+    //택시 마이페이지 정보 출력
+    @GetMapping ("taxInfoUpdate")
+    public ModelAndView taxInfoUpdate(String tid){
+        log.info("paxInfoUpdate()");
+        mv = tServ.taxInfoUpdate(tid);
+        return mv;
+    }
+
+    //택시 정보 수정
+    @PostMapping("tInfoFix")
+    public String tInfoFix(TaxMemberDto tmember, HttpSession session,
+                           RedirectAttributes rttr){
+        log.info("tInfoFix()");
+        String view = tServ.tInfoUpdate(tmember, session, rttr);
+        return view;
+    }
+
+    //택시 회원 탈퇴
+    @GetMapping("tWithd")
+    public String tWithd(String tid){
+        log.info("tWithd()");
+        String view = tServ.tWithdProc(tid);
+        return view;
+    }
 
     //택시 호출신청페이지 이동
     @GetMapping("taxBook")
@@ -35,8 +150,6 @@ public class TaxController {
         session.setAttribute("taxInfo", taxbook);
         return "taxChoice";
     }
-
-    //addTaxBookInfo로 메소드 이름 정할거임
 
     //택시 호출 메소드
     @GetMapping("tBookProc")
@@ -80,6 +193,7 @@ public class TaxController {
         return "taxBookList";
     }
 
+    //택시 상태 "1"(배차 완료)로 업데이트
     @PostMapping("updateStatus")
     @ResponseBody
     public String updateStatus(@RequestParam("tid") String tid) {
@@ -88,6 +202,7 @@ public class TaxController {
         return "success";
     }
 
+    //택시 상태 "0"(배차 대기)로 업데이트
     @PostMapping("resetStatus")
     @ResponseBody
     public String resetStatus(@RequestParam("tid") String tid){
@@ -96,6 +211,7 @@ public class TaxController {
         return "homeBus";
     }
 
+    //택시 호출 여부 체크
     @GetMapping("checkTaxBook")
     @ResponseBody
     public int checkTaxBook(@RequestParam("uid") String uid){

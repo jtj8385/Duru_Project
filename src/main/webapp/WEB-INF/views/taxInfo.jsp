@@ -164,7 +164,7 @@
   <div class="btn-container">
     <a href="taxInfoUpdate" class="btn">수정</a>
     <button class="btn" onclick="delCheck('${tmb.tid}')">탈퇴</button>
-    <a href="homeAfter" class="btn">뒤로가기</a>
+    <a href="homeBus" class="btn">뒤로가기</a>
   </div>
 </div>
 </body>

@@ -85,7 +85,7 @@
       color: #fff;
       position: relative;
       top: 100px;
-      left: 300px;
+      left: 285px;
     }
     .backbtn:hover{
       background-color: #4a82d6;
@@ -110,7 +110,7 @@
   <img src="images/logo.png" id="a">
   <form action="pFindId" method="post" id="b">
 
-    <div class="infolab">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이름</div>
+    <div class="infolab">센터 이름</div>
     <input type="text" id="username" name="pcenter_name">
     <br>
     <br>

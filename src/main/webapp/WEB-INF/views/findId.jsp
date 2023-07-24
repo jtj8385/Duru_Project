@@ -83,7 +83,7 @@
             color: #fff;
             position: relative;
             top: 100px;
-            left: 300px;
+            left: 285px;
         }
         .backbtn:hover{
             background-color: #4a82d6;
