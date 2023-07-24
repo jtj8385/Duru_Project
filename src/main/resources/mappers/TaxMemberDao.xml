@@ -19,6 +19,18 @@
     <update id="resetStatus" parameterType="String">
         UPDATE TaxMemberInfo SET status = 0 WHERE tid = #{tid};
     </update>
+
+    <update id="tInfoUpdate2">
+        UPDATE taxmemberinfo
+        SET tcom_name=#{tcom_name}, tname=#{tname}, carnum=#{carnum},
+            tphone_num=#{tphone_num},tbus_num=#{tbus_num},tcar_kind=#{tcar_kind}
+        WHERE tid=#{tid}
+    </update>
+
+    <delete id="mDelete">
+        DELETE FROM taxmemberinfo WHERE tid=#{tid}
+    </delete>
+
     <delete id="delTBookInfo" parameterType="String">
         DELETE FROM TaxBookInfo WHERE tid = #{tid};
     </delete>

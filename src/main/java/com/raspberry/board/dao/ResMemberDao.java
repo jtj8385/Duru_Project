@@ -31,4 +31,10 @@ public interface ResMemberDao {
 
     //음식점 사업자의 비밀번호 재설정 메소드
     void resMemberPwUpdate(String rpwd, String rid);
+
+    //음식점의 정보를 수정하는 메소드
+    void rInfoUpdate2(ResMemberDto rmember);
+
+    //음식점회원 정보를 삭제하는 메소드
+    void mDelete(String rid);
 }

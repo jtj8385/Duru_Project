@@ -89,6 +89,10 @@ public class MemberService {
                 // 세션에 로그인 성공 정보(접속자 정보) 저장
                 session.setAttribute("uid", member.getUid());
 
+                member = mDao.selectMember(member.getUid());
+                //세션에 Dto저장
+                session.setAttribute("mb", member);
+
                 // 로그인 성공 후 로그인 후 목록으로 이동
                 return "redirect:/homeAfter";
             } else {
@@ -111,12 +115,16 @@ public class MemberService {
     }
 
     //사용자 정보 가져오기
-    public ModelAndView getMember(String uid) {
+    public ModelAndView getMember(String uid){
         log.info("getMember()");
         mv = new ModelAndView();
+
         MemberDto mb = mDao.selectMember(uid);
+
         mv.addObject("mb", mb);
+
         mv.setViewName("userInfo");
+
         return mv;
     }
 
@@ -144,5 +152,42 @@ public class MemberService {
         String encpwd = pEncoder.encode(upwd);
         mDao.memberPwUpdate(encpwd, uid);
         return "userLogin";
+    }
+
+    public ModelAndView userUpdate(String uid) {
+        log.info("userUpdate()");
+        MemberDto mb = mDao.selectMember(uid);
+
+        mv = new ModelAndView();
+        mv.addObject("mb", mb);
+
+        mv.setViewName("userUpdate");
+        return mv;
+    }
+
+    public String mInfoUpdate(MemberDto member, HttpSession session, RedirectAttributes rttr) {
+        log.info("mInfoUpdate()");
+        String msg = null;
+        mDao.mInfoUpdate2(member);
+        member = mDao.selectMember(member.getUid());
+        session.setAttribute("mb", member);
+        msg = "회원 정보가 수정되었습니다.";
+        rttr.addFlashAttribute("msg", msg);
+        log.info("수정 완료");
+        return "redirect:userInfo";
+    }
+
+    //회원 탈퇴
+    public String mWithdProc(String uid,RedirectAttributes rttr) {
+        log.info("mWithdProc()");
+        String view = null;
+        try{
+            mDao.mDelete(uid);
+            view = "home";
+        }catch (Exception e){
+            e.printStackTrace();
+            view = "redirect:homeAfter?uid=" + uid;
+        }
+        return view;
     }
 }

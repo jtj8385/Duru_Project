@@ -50,5 +50,12 @@ public interface TaxMemberDao {
     //택시 운행완료후 택시 예약 정보 삭제
     void delTBookInfo(String tid);
 
+    //택시 예약 count 메소드
     int taxBookCount(String uid);
+
+    //택시 정보를 수정하는 메소드
+    void tInfoUpdate2(TaxMemberDto tmember);
+
+    //택시 정보를 삭제하는 메소드
+    void mDelete(String tid);
 }

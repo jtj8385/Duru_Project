@@ -83,6 +83,10 @@ public class TaxMemberService {
                 // 세션에 로그인 성공 정보(접속자 정보) 저장
                 session.setAttribute("tid", tmember.getTid());
 
+                tmember = tDao.selectMember(tmember.getTid());
+                //세션에 Dto저장
+                session.setAttribute("tmb", tmember);
+
                 // 로그인 성공 후 로그인 후 목록으로 이동
                 return "redirect:/homeBus";
             } else {
@@ -176,5 +180,43 @@ public class TaxMemberService {
 
     public int taxBookCount(String uid) {
         return tDao.taxBookCount(uid);
+    }
+
+    //마이페이지 수정
+    public ModelAndView taxInfoUpdate(String tid) {
+        log.info("taxUpdate()");
+        TaxMemberDto tmb = tDao.selectMember(tid);
+
+        mv = new ModelAndView();
+        mv.addObject("tmb", tmb);
+
+        mv.setViewName("taxInfoUpdate");
+        return mv;
+    }
+
+    public String tInfoUpdate(TaxMemberDto tmember, HttpSession session, RedirectAttributes rttr) {
+        log.info("tInfoUpdate()");
+        String msg = null;
+        tDao.tInfoUpdate2(tmember);
+        tmember = tDao.selectMember(tmember.getTid());
+        session.setAttribute("tmb", tmember);
+        msg = "회원 정보가 수정되었습니다.";
+        rttr.addFlashAttribute("msg", msg);
+        log.info("수정 완료");
+        return "redirect:taxInfo?tid="+tmember.getTid();
+    }
+
+    //회원 탈퇴
+    public String tWithdProc(String tid) {
+        log.info("tWithdProc()");
+        String view = null;
+        try{
+            tDao.mDelete(tid);
+            view = "home";
+        }catch (Exception e){
+            e.printStackTrace();
+            view = "redirect:homeAfter?tid=" + tid;
+        }
+        return view;
     }
 }

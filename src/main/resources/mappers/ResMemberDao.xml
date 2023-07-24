@@ -12,6 +12,16 @@
         SET  rpwd=#{rpwd}
         WHERE rid=#{rid}
     </update>
+    <update id="rInfoUpdate2" parameterType="String">
+        UPDATE resmemberinfo
+        SET rname=#{rname}, rbus_num=#{rbus_num}, rphone_num=#{rphone_num}, raddr=#{raddr},maindish=#{maindish},
+            rnum=#{rnum}, facil_size=#{facil_size}
+        WHERE rid=#{rid}
+    </update>
+
+    <delete id="mDelete">
+        DELETE FROM resmemberinfo WHERE rid=#{rid}
+    </delete>
 
     <select id="rJoin" parameterType="ResMemberDto">
         INSERT INTO resmemberinfo

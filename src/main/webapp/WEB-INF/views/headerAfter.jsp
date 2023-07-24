@@ -15,7 +15,12 @@
         <nav>
             <div id="top-right">
                 <div id="top-list">
-                    <li class="def">마이페이지</li>
+                    <li class="def">
+                        <button class="page-btn"><a href="userInfo" ${not empty uid ? '' : 'hidden'}>마이페이지</a></button>
+                        <button class="page-btn"><a href="taxInfo" ${not empty tid ? '' : 'hidden'}>마이페이지</a></button>
+                        <button class="page-btn"><a href="proInfo" ${not empty pid ? '' : 'hidden'}>마이페이지</a></button>
+                        <button class="page-btn"><a href="resInfo" ${not empty rid ? '' : 'hidden'}>마이페이지</a></button>
+                    </li>
                     <li class="def">${uid} ${rid} ${tid} ${pid}님</li>
                     <form action="logout" method="get">
                     <input class="def" id="logout-btn" type="submit" value="로그아웃">

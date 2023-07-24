@@ -14,6 +14,16 @@
         WHERE uid=#{uid}
     </update>
 
+    <update id="mInfoUpdate2">
+        UPDATE memberinfo
+        SET uname=#{uname}, ubirth=#{ubirth}, uphone_num=#{uphone_num}, uaddr=#{uaddr},ugender=#{ugender}
+        WHERE uid=#{uid}
+    </update>
+
+    <delete id="mDelete">
+        DELETE FROM memberinfo WHERE uid=#{uid}
+    </delete>
+
     <select id="mIdCheck" resultType="java.lang.Integer" parameterType="String">
         SELECT count(*) FROM memberinfo WHERE uid=#{uid}
     </select>
@@ -22,7 +32,7 @@
         SELECT upwd FROM memberinfo WHERE uid=#{uid}
     </select>
 
-    <select id="selectMember" resultType="com.raspberry.board.dto.MemberDto"
+    <select id="selectMember" resultType="MemberDto"
         parameterType="String">
         SELECT * FROM memberview WHERE uid=#{uid}
     </select>

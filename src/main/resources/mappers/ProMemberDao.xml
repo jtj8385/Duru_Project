@@ -13,6 +13,17 @@
         WHERE pid=#{pid}
     </update>
 
+    <update id="pInfoUpdate2">
+        UPDATE promemberinfo
+        SET pcenter_name=#{pcenter_name}, pcenter_loc=#{pcenter_loc}, pcenter_num=#{pcenter_num},
+            pbus_num=#{pbus_num}
+        WHERE pid=#{pid}
+    </update>
+
+    <delete id="mDelete">
+        DELETE FROM promemberinfo WHERE pid=#{pid}
+    </delete>
+
     <select id="pIdCheck" resultType="java.lang.Integer" parameterType="String">
         SELECT count(*) FROM promemberinfo WHERE pid=#{pid}
     </select>

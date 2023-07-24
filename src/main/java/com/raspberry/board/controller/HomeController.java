@@ -3,6 +3,7 @@ package com.raspberry.board.controller;
 import com.raspberry.board.dao.MemberDao;
 import com.raspberry.board.dao.ResBookDao;
 import com.raspberry.board.dao.ResMemberDao;
+import com.raspberry.board.dao.TaxMemberDao;
 import com.raspberry.board.dto.*;
 import com.raspberry.board.service.MemberService;
 import com.raspberry.board.service.ProMemberService;
@@ -35,6 +36,10 @@ public class HomeController {
     private ProMemberService pServ;
     @Autowired
     private ResMemberDao rDao;
+    @Autowired
+    private TaxMemberDao tDao;
+    @Autowired
+    private MemberDao mDao;
 
     private ModelAndView mv;
 
@@ -571,6 +576,113 @@ public class HomeController {
     public String rRefuse(Integer rbook_num, RedirectAttributes rttr){
         log.info("rRefuse()");
         return rServ.resRefuse(rbook_num, rttr);
+    }
+
+    //사용자 마이페이지 관련
+    @GetMapping ("userUpdate")
+    public ModelAndView userUpdate(String uid){
+        log.info("userUpdate()");
+        mv = mServ.userUpdate(uid);
+        return mv;
+    }
+
+    @PostMapping("mInfoFix")
+    public String mInfoFix(MemberDto member, HttpSession session,
+                           RedirectAttributes rttr){
+        log.info("mInfoFix()");
+        String view = mServ.mInfoUpdate(member, session, rttr);
+        return view;
+    }
+
+    @GetMapping("mWithd")
+    public String mWithd(String uid, RedirectAttributes rttr){
+        log.info("mWithd()");
+        String view = mServ.mWithdProc(uid, rttr);
+        return view;
+    }
+    //식당 마이페이지
+    @GetMapping("resInfo")
+    public String resInfo(){
+        log.info("resInfo()");
+        return "resInfo";
+    }
+    @GetMapping ("resInfoUpdate")
+    public ModelAndView resInfoUpdate(String rid){
+        log.info("resInfoUpdate()");
+        mv = rServ.resInfoUpdate(rid);
+        return mv;
+    }
+
+    @PostMapping("rInfoFix")
+    public String rInfoFix(ResMemberDto rmember, HttpSession session,
+                           RedirectAttributes rttr){
+        log.info("rInfoFix()");
+        String view = rServ.rInfoUpdate(rmember, session, rttr);
+        return view;
+    }
+
+    @GetMapping("rWithd")
+    public String rWithd(String rid){
+        log.info("rWithd()");
+        String view = rServ.rWithdProc(rid);
+        return view;
+    }
+    //택시 마이페이지
+    @GetMapping("taxInfo")
+    public String taxInfo(){
+        log.info("taxInfo()");
+        return "taxInfo";
+    }
+
+    @GetMapping ("taxInfoUpdate")
+    public ModelAndView taxInfoUpdate(String tid){
+        log.info("paxInfoUpdate()");
+        mv = tServ.taxInfoUpdate(tid);
+        return mv;
+    }
+
+    @PostMapping("tInfoFix")
+    public String tInfoFix(TaxMemberDto tmember, HttpSession session,
+                           RedirectAttributes rttr){
+        log.info("tInfoFix()");
+        String view = tServ.tInfoUpdate(tmember, session, rttr);
+        return view;
+    }
+
+    @GetMapping("tWithd")
+    public String tWithd(String tid){
+        log.info("tWithd()");
+        String view = tServ.tWithdProc(tid);
+        return view;
+    }
+
+    //프로그램 마이페이지
+    @GetMapping("proInfo")
+    public String proInfo(){
+        log.info("proInfo()");
+        return "proInfo";
+    }
+
+    @GetMapping ("proInfoUpdate")
+    public ModelAndView proInfoUpdate(String pid){
+        log.info("proInfoUpdate()");
+        mv = pServ.proInfoUpdate(pid);
+        return mv;
+    }
+
+    @PostMapping("pInfoFix")
+    public String pInfoFix(ProMemberDto pmember, HttpSession session,
+                           RedirectAttributes rttr){
+        log.info("pInfoFix()");
+        String view = pServ.pInfoUpdate(pmember, session, rttr);
+        return view;
+    }
+
+    @GetMapping("pWithd")
+    public String pWithd(String pid){
+        log.info("pWithd()");
+        String view = pServ.pWithdProc(pid);
+        return view;
     }
 
 

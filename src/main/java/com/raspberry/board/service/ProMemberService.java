@@ -81,6 +81,10 @@ public class ProMemberService {
                 // 세션에 로그인 성공 정보(접속자 정보) 저장
                 session.setAttribute("pid", pmember.getPid());
 
+                pmember = pDao.selectMember(pmember.getPid());
+                //세션에 Dto저장
+                session.setAttribute("pmb", pmember);
+
                 // 로그인 성공 후 로그인 후 목록으로 이동
                 return "redirect:/homeBus";
             } else {
@@ -124,5 +128,42 @@ public class ProMemberService {
         pDao.proMemberPwUpdate(encpwd, pid);
         return "proLogin";
 
+    }
+
+    //마이 페이지
+    public ModelAndView proInfoUpdate(String pid) {
+        log.info("proInfoUpdate()");
+        ProMemberDto pmb = pDao.selectMember(pid);
+
+        mv = new ModelAndView();
+        mv.addObject("pmb", pmb);
+
+        mv.setViewName("proInfoUpdate");
+        return mv;
+    }
+
+    public String pInfoUpdate(ProMemberDto pmember, HttpSession session, RedirectAttributes rttr) {
+        log.info("pInfoUpdate()");
+        String msg = null;
+        pDao.pInfoUpdate2(pmember);
+        pmember = pDao.selectMember(pmember.getPid());
+        session.setAttribute("pmb", pmember);
+        msg = "회원 정보가 수정되었습니다.";
+        rttr.addFlashAttribute("msg", msg);
+        log.info("수정 완료");
+        return "redirect:proInfo?pid="+pmember.getPid();
+    }
+    //회원 탈퇴
+    public String pWithdProc(String pid) {
+        log.info("pWithdProc()");
+        String view = null;
+        try{
+            pDao.mDelete(pid);
+            view = "home";
+        }catch (Exception e){
+            e.printStackTrace();
+            view = "redirect:homeAfter?pid=" + pid;
+        }
+        return view;
     }
 }

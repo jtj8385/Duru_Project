@@ -92,6 +92,10 @@ public class ResMemberService {
                 // 세션에 로그인 성공 정보(접속자 정보) 저장
                 session.setAttribute("rid", rmember.getRid());
 
+                rmember = rDao.selectMember(rmember.getRid());
+                //세션에 Dto저장
+                session.setAttribute("rmb", rmember);
+
                 // 로그인 성공 후 로그인 후 목록으로 이동
                 return "redirect:/homeBus";
             } else {
@@ -189,5 +193,45 @@ public class ResMemberService {
 
         return "resLogin";
 
+    }
+
+    // 식당마이페이지
+    public ModelAndView resInfoUpdate(String rid) {
+        log.info("resInfoUpdate()");
+
+        ResMemberDto rmb = rDao.selectMember(rid);
+
+        mv = new ModelAndView();
+        mv.addObject("rmb", rmb);
+
+        mv.setViewName("resInfoUpdate");
+        return mv;
+    }
+
+    //식당 회원정보 수정
+    public String rInfoUpdate(ResMemberDto rmember, HttpSession session, RedirectAttributes rttr) {
+        log.info("rInfoUpdate()");
+        String msg = null;
+        rDao.rInfoUpdate2(rmember);
+        rmember = rDao.selectMember(rmember.getRid());
+        //세션에 Dto저장
+        session.setAttribute("rmb", rmember);
+        msg = "회원 정보가 수정되었습니다.";
+        rttr.addFlashAttribute("msg", msg);
+        return "redirect:resInfo";
+    }
+
+    //식당 회원 탈퇴
+    public String rWithdProc(String rid) {
+        log.info("rWithdProc()");
+        String view = null;
+        try{
+            rDao.mDelete(rid);
+            view = "home";
+        }catch (Exception e){
+            e.printStackTrace();
+            view = "redirect:homeAfter?rid=" + rid;
+        }
+        return view;
     }
 }

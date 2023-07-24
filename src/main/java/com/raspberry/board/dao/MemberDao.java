@@ -25,4 +25,10 @@ public interface MemberDao {
 
     //사용자의 비밀번호 재설정 메소드
     void memberPwUpdate(String upwd, String uid);
+
+    //사용자의 정보를 수정하는 메소드
+    void mInfoUpdate2(MemberDto member);
+
+    //회원 정보를 삭제하는 메소드
+    void mDelete(String uid);
 }
