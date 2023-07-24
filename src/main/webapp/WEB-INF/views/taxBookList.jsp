@@ -300,6 +300,15 @@
 <jsp:include page="footer.jsp"></jsp:include>
 </body>
 <script>
+  // 페이지 로드 시에 버튼 상태를 확인하고 설정합니다.
+  window.onload = function () {
+    var isAccepted = localStorage.getItem("isAccepted");
+    if (isAccepted === "true") {
+      document.getElementById("accept").style.display = "none";
+      document.getElementById("dFinish").style.display = "block";
+    }
+  };
+
   function acceptBtn(tid) {
     $.ajax({
       url: 'updateStatus', // 서버의 요청 주소를 입력합니다.
@@ -312,6 +321,9 @@
         document.getElementById("accept").style.display = "none";
         //운행 완료 버튼 표시
         document.getElementById("dFinish").style.display = "block";
+        // 상태를 localStorage에 저장
+        //수락을 누른 뒤 운행완료 버튼 출력 후, 다른페이지로 이동하고 다시 돌아와도 운행완료버튼 유지
+        localStorage.setItem("isAccepted", "true");
       },
       error: function () {
         // 요청이 실패하면 이 함수가 실행됩니다.
