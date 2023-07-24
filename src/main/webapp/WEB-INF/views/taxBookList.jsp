@@ -339,7 +339,9 @@
       data: {tid : tid},
       success: function (res){
         console.log(res);
-        alert("운행을 종료합니다.")
+        alert("운행을 종료합니다.");
+        // localStorage에서 상태 값을 삭제
+        localStorage.removeItem("isAccepted");
         window.location.href = 'homeBus';
       },
       error: function (err){
