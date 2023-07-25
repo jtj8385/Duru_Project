@@ -18,7 +18,7 @@
         }
         #banner{
             background-color: #4999e4;
-            width: 1200px;
+            width: 785px;
             height: 60px;
             display: flex;
             align-items: center;
@@ -106,7 +106,7 @@
                         <td class="p-30">날짜</td>
                     </tr>
                 </table>
-                <table style="width: 100%;" id="ctable">
+                <table style="width: 100%; text-align: center" id="ctable">
                     <c:forEach var="ritem" items="${comment}">
                         <tr>
                             <td class="p-20" style="text-align: center">${ritem.c_id}</td>
@@ -121,9 +121,9 @@
             </div>
         </div>
     </section>
-    <footer>
+
         <jsp:include page="footer.jsp"></jsp:include>
-    </footer>
+
 </div>
 </body>
 <script>

@@ -20,7 +20,7 @@
   <style>
     #banner{
       background-color: #4999e4;
-      width: 1200px;
+      width: 1090px;
       height: 60px;
       display: flex;
       align-items: center;
@@ -65,6 +65,9 @@
     #t-date{
       text-align: center;
       line-height: 30px;
+    }
+    footer{
+      margin: 0 auto;
     }
   </style>
 </head>
@@ -121,9 +124,9 @@
       </div>
     </div>
   </section>
-  <footer>
+
     <jsp:include page="footer.jsp"></jsp:include>
-  </footer>
+
 </div>
 </body>
 <script>
