@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
   <title> 로그인 완료</title>
@@ -9,6 +10,12 @@
   <style>
     footer{
       margin-top: 100px;
+    }
+    a.llink:link {
+      color: #000;
+    }
+    a.llink:visited{
+      color: #000;
     }
   </style>
   <script>
@@ -97,17 +104,22 @@
   </div>
   <div id="box3">
     <input type="radio" id="tab1" name="tabs" checked>
-    <label for="tab1">게시판</label>
-    <div id="notice" class="tabContent">
-      <h2>게시판 내용입니다.</h2>
+    <label for="tab1"><a href="boardList?pageNum=1" class="llink">게시판</a></label>
+    <li id="notice" class="tabContent">
       <ul>
-        <li>[참가 모집] 여름 방학, 유럽여행 인원 모집합니다. </li>
-        <li>[참가 모집] 일본 여행 인원 모집합니다.</li>
-        <li>[공지] 홈페이지 새단장 기념</li>
-        <li>항공원, 저렴하게 사는법</li>
-        <li>여행시 주의사항 10가지</li>
+        <c:if test="${empty board}">
+          <li class="llink">게시글이 없습니다.</li>
+        </c:if>
+        <c:if test="${!empty board}">
+          <c:forEach var="bitem" items="${board}" varStatus="status">
+            <li>
+              <a href="/boardDetail?b_no=${bitem.b_no}" class="llink">
+                  ${bitem.b_title}
+              </a>
+            </li>
+          </c:forEach>
+        </c:if>
       </ul>
-    </div>
   </div>
   <div id="box4">
     <div class="slide slide_wrap">

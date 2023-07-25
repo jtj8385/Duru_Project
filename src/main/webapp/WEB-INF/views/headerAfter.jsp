@@ -58,7 +58,9 @@
                         <li><a href="${uid == rid || uid == tid || uid == pid ? 'homeBus' : '#'}"
                                onclick="${uid == rid || uid == tid || uid == pid ?
                                'alert(\'사업자는 이용이 불가능한 서비스 입니다..\')' : ''}">프로그램</a></li>
-                        <li><a href="#">게시판</a></li>
+                        <li><a href="${uid == rid || uid == tid || uid == pid ? 'homeBus' : 'boardList?pageNum=1'}"
+                               onclick="${uid == rid || uid == tid || uid == pid ?
+                               'alert(\'사업자는 이용이 불가능한 서비스 입니다..\')' : ''}">게시판</a></li>
                     </ul>
                 </li>
 

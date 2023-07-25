@@ -1,0 +1,144 @@
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+}
+*{
+    font-family: 'TheJamsil5Bold';
+}
+section {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+.content{
+    height: auto;
+    width: 1200px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    max-width: 1200px;
+}
+a{
+    text-decoration: none;
+}
+a:link {
+    color: black;
+}
+a:visited{
+    color: black;
+}
+.board-form {
+    width: 1100px;
+    height: auto;
+    padding: 15px;
+    margin: 0 auto;
+
+}
+.title-row>div {
+    display: inline-block;
+    float: left;
+    height: 30px;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 10px;
+    background-color: #ecf2ff;
+    border: 1px solid black;
+}
+.data-row>div {
+    display: inline-block;
+    float: left;
+    height: 40px;
+    font-size: 23px;
+    text-align: center;
+    background-color: white;
+    border: 1px solid black;
+    overflow: hidden;
+    padding: 2px;
+    transition: border-color ease-in-out .15s;
+}
+.data-area{
+    margin-bottom: 10px;
+}
+.btn-area .paging {
+    display: block;
+    width: 100%;
+    margin: 0px auto;
+    text-align: center;
+    margin-top: 100px;
+    height: 50px;
+}
+.paging .pno{
+    background-color: #4999e4;
+    margin: 2px;
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+    color: white;
+    width: 50px;
+    height: 20px;
+}
+.paging>a{
+    text-decoration: none;
+}
+.paging>a:visited{
+    background-color: #4a82d6;
+}
+.btn-area {
+    margin: 0 auto;
+    width: 200px;
+    height: 100px;
+}
+.wr-btn{
+    display: block;
+    width: 100px;
+    height: 40px;
+    font-size: 25px;
+    border-radius: 5px;
+    border-style: none;
+    background-color: #4999e4;
+    color: #ffffff;
+    margin-top: 30px;
+}
+.wr-btn:hover{
+    background-color: #4a82d6;
+}
+#search {
+    border-radius: 4px;
+    border-style: none;
+    background-color: #4999e4;
+    color: #ffffff;
+    width: 50px;
+    height: 20px;
+}
+#search:hover{
+    background-color: #4a82d6;
+}
+.t-no{
+    width: 15%;
+}
+.t-title{
+    width: 35%;
+}
+.t-id{
+    width: 25%;
+}
+.t-date{
+    width: 25%;
+}
+.search-area{
+    display: block;
+    width: 300px;
+    height: 150px;
+    margin-top: 15px;
+}
+.btn-area{
+    display: block;
+    width: 600px;
+    height: 200px;
+    margin: 0 auto;
+}
+.btn-area .wr-btn {
+    display: block;
+    margin: 0 auto;
+}

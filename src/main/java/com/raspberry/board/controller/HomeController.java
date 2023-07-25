@@ -1,9 +1,6 @@
 package com.raspberry.board.controller;
 import com.raspberry.board.dto.*;
-import com.raspberry.board.service.MemberService;
-import com.raspberry.board.service.ProMemberService;
-import com.raspberry.board.service.ResMemberService;
-import com.raspberry.board.service.TaxMemberService;
+import com.raspberry.board.service.*;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -24,13 +23,27 @@ public class HomeController {
     private TaxMemberService tServ;
     @Autowired
     private ProMemberService pServ;
+    @Autowired
+    private BoardService bServ;
 
     private ModelAndView mv;
 
 
     @GetMapping("/")
-    public String home(){
+    public String home(HttpSession session, Model model){
         log.info("home()");
+
+        // 세션에서 회원 아이디 값을 가져옵니다.
+        String uid = (String) session.getAttribute("uid");
+        log.info(uid);
+        // Model에 회원 아이디 값을 저장하여 View로 전달합니다.
+        MemberDto member = new MemberDto();
+        member.setUid(uid);
+        model.addAttribute("member", member);
+
+        List<BoardDto> board = bServ.getPreBoardList();
+        model.addAttribute("board", board);
+
         return "home";
     }
 
@@ -47,6 +60,9 @@ public class HomeController {
         MemberDto member = new MemberDto();
         member.setUid(uid);
         model.addAttribute("member", member);
+
+        List<BoardDto> board = bServ.getPreBoardList();
+        model.addAttribute("board", board);
 
         return "homeAfter";
     }
@@ -79,6 +95,9 @@ public class HomeController {
         ProMemberDto pmember = new ProMemberDto();
         pmember.setPid(pid);
         model.addAttribute("pmember", pmember);
+
+        List<BoardDto> board = bServ.getPreBoardList();
+        model.addAttribute("board", board);
 
         return "homeBus";
     }

@@ -50,7 +50,12 @@ h2 {
     margin: 10px 2.5px 100px 2.5px;
 
 }
-
+a.llink:link {
+    color: #000;
+}
+a.llink:visited{
+    color: #000;
+}
 /***************자주 찾는 서비스 부분*******************/
 ul {
     list-style: none;
@@ -320,4 +325,11 @@ p {
     display: block;
 }
 
+#box3 a.llink {
+    text-decoration: none;
+}
+
+#box3 a.llink:visited {
+    text-decoration: none;
+}
 

@@ -19,7 +19,7 @@
                         <li><a href="#" onclick="checkLogin('')">음식점</a></li>
                         <li><a href="#" onclick="checkLogin('')">택시</a></li>
                         <li><a href="#" onclick="checkLogin('')">프로그램</a></li>
-                        <li><a href="#">게시판</a></li>
+                        <li><a href="#" onclick="checkLogin('')">게시판</a></li>
                     </ul>
                 </li>
                 <!--
