@@ -54,7 +54,7 @@
         </a>
       </li>
       <li>
-        <a href="${pid == rid || pid == tid ? 'homeBus' : '#'}"
+        <a href="${pid == rid || pid == tid ? 'homeBus' : 'proSelect'}"
            onclick="${pid == rid || pid == tid ? 'alert(\'프로그램 회원만 이용 가능한 서비스입니다.\')' : ''}">
           <span id="quick-icon3-1"></span>
           <p>프로그램 관리</p>

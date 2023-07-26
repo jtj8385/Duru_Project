@@ -1,6 +1,9 @@
 package com.raspberry.board.controller;
 
+import com.raspberry.board.dto.ProBookDto;
+import com.raspberry.board.dto.ProInfoDto;
 import com.raspberry.board.dto.ProMemberDto;
+import com.raspberry.board.service.ProBookService;
 import com.raspberry.board.service.ProMemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +21,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class ProController {
     @Autowired
     private ProMemberService pServ;
+    @Autowired
+    private ProBookService pbServ;
 
     private ModelAndView mv;
 
@@ -131,4 +136,97 @@ public class ProController {
         String view = pServ.pWithdProc(pid);
         return view;
     }
+
+    @GetMapping("proList")
+    public ModelAndView proList(HttpSession session) {
+        log.info("proList()");
+        mv = pServ.getProList(session);//서비스에서 데이터 삽입 및 목적페이지 지정.
+        return mv;
+    }
+
+    //신청 페이지 이동
+    @GetMapping("proBook")
+    public String proBook(String p_no, String p_pid, Model model){
+        log.info("proBook()");
+        model.addAttribute("p_pid", p_pid);
+        model.addAttribute("p_no", p_no);
+        return "proBook";
+    }
+
+    //신청 정보를 처리하는 메소드
+    @PostMapping("pBookProc")
+    public String pBookProc(ProBookDto proBookDto, RedirectAttributes rttr) {
+        log.info("pBookProc()");
+        String view = pbServ.addProBookInfo(proBookDto, rttr);
+        return view;
+    }
+
+    @GetMapping("proListBus")
+    public ModelAndView proListBus(HttpSession session) {
+        log.info("proListBus()");
+        mv = pServ.getProListBus(session);//서비스에서 데이터 삽입 및 목적페이지 지정.
+        return mv;
+    }
+
+    @GetMapping("proInput")
+    public String proInput(){
+        log.info("proInput()");
+        return "proInput";
+    }
+
+    @PostMapping("proInputProc")
+    public String proInputProc(ProInfoDto proinfo, RedirectAttributes rttr){
+        log.info("proInputProc()");
+        String view = pServ.proWrite(proinfo, rttr);
+        return view;
+    }
+
+    @GetMapping("proSelect")
+    public String proSelect(){
+        log.info("proSelect()");
+        return "proSelect";
+    }
+
+    @GetMapping("proDelete")
+    public String proDelete(Integer p_no, RedirectAttributes rttr){
+        log.info("proDelete()");
+        String view = pServ.proDelete(p_no, rttr); //서비스에서 처리
+        return view;
+    }
+
+    @GetMapping("proUpdate")
+    public ModelAndView proUpdate(Integer p_no){
+        log.info("proUpdate()");
+        mv = pServ.proUpdate(p_no); //서비스에서 처리
+        return mv;
+    }
+
+    @PostMapping("proUpdateProc")
+    public String proUpdateProc(ProInfoDto proinfo, RedirectAttributes rttr){
+        log.info("proUpdateProc()");
+        String view = pServ.updatePro(proinfo, rttr);
+        return view;
+    }
+
+    @GetMapping("proBookList")
+    public ModelAndView proBookList(HttpSession session) {
+        log.info("proLBookList()");
+        mv = pServ.getProBookList(session);//서비스에서 데이터 삽입 및 목적페이지 지정.
+        return mv;
+    }
+
+    @GetMapping("proCheck")
+    public ModelAndView proCheck(HttpSession session) {
+        log.info("proCheck()");
+        mv = pServ.getBookProList(session);
+        return mv;
+    }
+
+    @GetMapping("proBookDelete")
+    public String proBookDelete(String uid, RedirectAttributes rttr){
+        log.info("proBookDelete()");
+        String view = pServ.proBookDelete(uid, rttr); //서비스에서 처리
+        return view;
+    }
+
 }

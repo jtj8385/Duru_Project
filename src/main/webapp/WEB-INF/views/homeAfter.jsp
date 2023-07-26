@@ -50,7 +50,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="proList">
           <span id="quick-icon3"></span>
           <p>프로그램</p>
         </a>
@@ -68,7 +68,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="proCheck">
           <span id="quick-icon6"></span>
           <p>프로그램 신청 목록</p>
         </a>

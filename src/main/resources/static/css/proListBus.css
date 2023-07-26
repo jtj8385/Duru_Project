@@ -1,0 +1,121 @@
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+}
+*{
+    font-family: 'TheJamsil5Bold';
+}
+section {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+.content{
+    height: auto;
+    width: 1200px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: -15px;
+    max-width: 1200px;
+}
+.program-form {
+    width: 1100px;
+    height: auto;
+    padding: 15px;
+    margin: 0 auto;
+
+}
+.title-row>div {
+    display: inline-block;
+    float: left;
+    height: 60px;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    background-color: #ecf2ff;
+    border: none;
+    line-height: 4.0;
+}
+#title-name{
+    border-top-left-radius: 6px;
+}
+#title-button{
+    border-top-right-radius: 6px;
+}
+.data-row>div {
+    display: inline-block;
+    float: left;
+    font-size: 23px;
+    text-align: center;
+    background-color: white;
+    border: none;
+    padding: 2px;
+    transition: border-color ease-in-out .15s;
+    line-height: 2.0;
+    align-items: center;
+}
+.data-area{
+    margin-bottom: 10px;
+}
+.wr-btn{
+    display: block;
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+    border-style: none;
+    background-color: #4999e4;
+    color: #ffffff;
+    margin-top: 30px;
+}
+.wr-btn:hover{
+    background-color: #4a82d6;
+}
+.t-cname{
+    width: 15%;
+}
+.t-addr{
+    width: 25%;
+}
+.t-kind{
+    width: 10%;
+}
+.t-time{
+    width: 15%;
+}
+.t-subject{
+    width: 15%;
+}
+.t-button{
+    width: 20%;
+    align-items: center;
+}
+section{
+    margin-bottom: 100px;
+}
+.upbtn{
+    border-radius: 3px;
+    border-style: none;
+    background-color: #4999e4;
+    color: white;
+    display: inline-block;
+    width: 60px;
+    font-size: 15px;
+    height: 25px;
+}
+.upbtn:hover{
+    background-color: #4a82d6;
+}
+.btn-area{
+    display: flex;
+    width: 300px;
+    height: 50px;
+    position: relative;
+    margin: 0 auto;
+    top: 50px;
+}
+.btn-area .wr-btn {
+    display: block;
+    margin-right: 10px;
+}

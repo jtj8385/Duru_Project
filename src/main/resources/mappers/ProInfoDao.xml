@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.raspberry.board.dao.ProInfoDao">
+    <insert id="insertPro" parameterType="ProInfoDto"
+            useGeneratedKeys="true" keyProperty="p_no">
+        <selectKey keyProperty="p_no"
+                   resultType="Integer"
+                   order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO proinfo
+        VALUES (NULL, #{proname}, #{paddr}, #{pkind}, #{ptime}, #{psubject}, #{p_pid})
+    </insert>
+    <update id="updatePro" parameterType="ProinfoDto">
+        UPDATE proinfo SET proname=#{proname}, paddr=#{paddr}, pkind=#{pkind}, ptime=#{ptime}, psubject=#{psubject}
+        WHERE p_no=#{p_no}
+    </update>
+    <delete id="deletePro" parameterType="Integer">
+        DELETE FROM proinfo WHERE p_no=#{p_no}
+    </delete>
+    <select id="selectProListBus" resultType="ProInfoDto" parameterType="String">
+        SELECT * FROM plist WHERE p_pid=#{pid}
+    </select>
+    <select id="selectPro" resultType="ProInfoDto" parameterType="Integer">
+        SELECT * FROM plist WHERE p_no=#{p_no}
+    </select>
+    <select id="selectProList" resultType="ProInfoDto">
+        SELECT * FROM plist
+    </select>
+    <select id="selectBookProList" resultType="ProInfoDto" parameterType="String">
+        SELECT * FROM proinfoview WHERE p_pid=#{p_pid};
+    </select>
+</mapper>

@@ -1,0 +1,40 @@
+.content {
+    background-color: #ecf2ff;
+    width: 800px;
+    height: 300px;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+.btn-area{
+    display: flex;
+    position: relative;
+    width: 300px;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.btn-write {
+    width: 100px;
+    height: 40px;
+    padding: 10px 16px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #4999e4;
+    color: white;
+    border-style: none;
+    margin: 0 auto;
+}
+.btn-write:hover {
+    background-color: #4a82d6;
+}
+section{
+    margin-bottom: 50px;
+}
+#input-box{
+    position: relative;
+    display: block;
+    top: 30px;
+}
