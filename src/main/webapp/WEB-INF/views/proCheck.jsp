@@ -64,7 +64,7 @@
 <div class="wrap">
   <header><jsp:include page="headerAfter.jsp"></jsp:include></header>
   <section>
-    <div id="banner"><h1>프로그램 신청자 정보 조회</h1></div>
+    <div id="banner"><h1>프로그램 정보 조회</h1></div>
     <div class="content">
       <div class="program-form">
         <div class="data-area">
@@ -90,7 +90,7 @@
                 <div class="t-bname" id="ptime">${pitem.ptime}</div>
                 <div class="t-birth" id="psubject">${pitem.psubject}</div>
                 <div class="t-button">
-                  <input type="button" value="취소" id="pDelBtn" class="upbtn" onclick="pDel('${pitem.uid}')">
+                  <input type="button" value="취소" id="pDelBtn" class="upbtn" onclick="pDel('${pitem.p_no}','${pitem.uid}')">
                 </div>
               </c:forEach>
             </c:if>
@@ -107,11 +107,11 @@
 </div>
 </body>
 <script>
-  function pDel(uid){
+  function pDel(p_no, uid){
     //상세 화면으로 보이는 프로그램을 삭제(프로그램 번호로 삭제)
     let conf = confirm("취소하시겠습니까?");
     if (conf == true){
-      location.href = "/proBookDelete?uid=" + uid;
+      location.href = "/proBookDelete?p_no=" + p_no + "&uid=" + uid;
     }
   }
 </script>

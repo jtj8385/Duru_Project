@@ -15,5 +15,5 @@ public interface ProBookDao {
     // 프로그램 예약 정보 목록을 가져오는 메소드 선언
 
     //프로그램 신청 취소 메소드 선언
-    void deleteProBook(String uid);
+    void deleteProBook(Integer p_no, String uid);
 }

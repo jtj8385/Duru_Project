@@ -218,7 +218,7 @@
 <form action="proJoinProc" method="post" class="joinForm"
       name="pJoinForm"  onsubmit="return check() && checkPassword()">
 
-  <h2>사업자 회원가입</h2>
+  <h2>프로그램 회원가입</h2>
   <div class="textForm">
     <input name="pid" id="pid" type="text" title="아이디" class="id" placeholder="아이디">
 

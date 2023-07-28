@@ -231,7 +231,7 @@ public class ProMemberService {
         } catch (Exception e) {
             e.printStackTrace();
             view = "redirect:proListBus";
-            msg = "삭제를 실패했습니다.";
+            msg = "신청자가 있어 삭제가 불가능합니다.";
         }
         rttr.addFlashAttribute("msg", msg);
         return view;
@@ -291,20 +291,20 @@ public class ProMemberService {
         return mv;
     }
 
-    public String proBookDelete(String uid, RedirectAttributes rttr) {
+    public String proBookDelete(Integer p_no, String uid, RedirectAttributes rttr) {
         log.info("proBookDelete()");
         String view = null;
         String msg = null;
 
         try{
-            pbDao.deleteProBook(uid);
+            pbDao.deleteProBook(p_no, uid);
 
             view = "redirect:proCheck";
-            msg = "취소 되었습니다..";
+            msg = "취소 되었습니다.";
         } catch (Exception e) {
             e.printStackTrace();
             view = "redirect:proCheck";
-            msg = "취소를 실패했습니다..";
+            msg = "취소를 실패했습니다.";
         }
         rttr.addFlashAttribute("msg", msg);
         return view;

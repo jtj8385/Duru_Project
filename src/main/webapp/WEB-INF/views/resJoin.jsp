@@ -18,7 +18,7 @@
 <form action="resJoinProc" method="POST" class="joinForm"
       name="rJoinForm" onsubmit="return check() && checkPassword()">
 
-    <h2>사업자 회원가입</h2>
+    <h2>음식점 회원가입</h2>
     <div class="textForm">
         <input name="rid" id="rid" type="text" title="아이디" class="id" placeholder="아이디">
 

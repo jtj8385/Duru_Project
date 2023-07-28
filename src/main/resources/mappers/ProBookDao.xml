@@ -15,11 +15,12 @@
         INSERT INTO probookinfo
         VALUES (NULL, #{uid}, #{pb_uname}, #{ubirth}, #{uphone_num}, #{p_no})
     </insert>
-    <delete id="deleteProBook" parameterType="String">
-        DELETE FROM probookinfo WHERE uid=#{uid}
+    <delete id="deleteProBook">
+        DELETE FROM ProBookInfo
+        WHERE uid = #{uid} AND p_no = #{p_no}
     </delete>
     <select id="selectProBookList" resultType="ProBookDto" parameterType="String">
-        SELECT * FROM probookview WHERE uid=#{uid};
+        SELECT * FROM probookview WHERE uid=#{uid}
     </select>
 
 </mapper>

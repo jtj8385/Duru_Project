@@ -223,9 +223,9 @@ public class ProController {
     }
 
     @GetMapping("proBookDelete")
-    public String proBookDelete(String uid, RedirectAttributes rttr){
+    public String proBookDelete(Integer p_no, String uid, RedirectAttributes rttr){
         log.info("proBookDelete()");
-        String view = pServ.proBookDelete(uid, rttr); //서비스에서 처리
+        String view = pServ.proBookDelete(p_no,uid, rttr); //서비스에서 처리
         return view;
     }
 
