@@ -28,9 +28,9 @@ public class ResController {
     //REST 방식(Ajax)으로 전송할 경우의 메소드
     @GetMapping("rIdCheck")
     @ResponseBody           //REST 방식일 때 꼭 넣을 것.
-    public String rIdCheck(String pid){
+    public String rIdCheck(String rid){
         log.info("rIdCheck()");
-        String res = rServ.rIdCheck(pid);
+        String res = rServ.rIdCheck(rid);
 
         return res;
     }
@@ -147,7 +147,7 @@ public class ResController {
 
     //예약 정보를 처리하는 메소드
     @PostMapping("rBookProc")
-    public String rBookProc(ResBookDto resBookDto, Model model) {
+    public String rBookProc(ResBookDto resBookDto) {
         rServ.addResBookInfo(resBookDto);
         return "redirect:/resList";
     }

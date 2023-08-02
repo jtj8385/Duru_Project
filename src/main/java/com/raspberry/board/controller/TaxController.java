@@ -107,7 +107,7 @@ public class TaxController {
         return "taxInfo";
     }
 
-    //택시 마이페이지 정보 출력
+    //택시 마이페이지 업데이트 전 정보 출력
     @GetMapping ("taxInfoUpdate")
     public ModelAndView taxInfoUpdate(String tid){
         log.info("paxInfoUpdate()");

@@ -58,7 +58,7 @@
         <jsp:include page="headerAfter.jsp"></jsp:include>
     </header>
     <section>
-        <div id="banner"><h1>프로그램 등록</h1></div>
+        <div id="banner"><h1>프로그램 수정</h1></div>
         <div class="content">
             <form action="proUpdateProc" class="input-form" method="post">
                 <div id="input-box">

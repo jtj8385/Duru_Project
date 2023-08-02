@@ -146,7 +146,7 @@ public class ResMemberService {
             msg = "예약이 취소되었습니다.";
         } catch (Exception e){
             e.printStackTrace();
-            msg = "다시한번 실행해주세요.";
+            msg = "다시 한번 실행해주세요.";
         }
         rttr.addFlashAttribute("msg", msg);
         return view;
@@ -160,7 +160,7 @@ public class ResMemberService {
             msg = "예약 거절을 완료하였습니다.";
         } catch (Exception e){
             e.printStackTrace();
-            msg = "다시한번 실행해주세요.";
+            msg = "다시 한번 실행해주세요.";
         }
         rttr.addFlashAttribute("msg", msg);
         return view;

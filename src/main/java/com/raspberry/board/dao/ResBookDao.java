@@ -19,5 +19,5 @@ public interface ResBookDao {
     void cancelReservation(Integer rbook_num);
 
     //예약 거절 메소드(사업자)
-    void refuseReservation(Integer rbook_nuum);
+    void refuseReservation(Integer rbook_num);
 }

@@ -205,7 +205,7 @@
 <script>
     //이전 페이지 이동
     function goBack() {
-        window.history.back();
+        window.location.href = 'homeAfter';
     }
 
     function rMvBook(rid) {

@@ -156,7 +156,7 @@ public class HomeController {
     ///////////사용자////////////
     //REST 방식(Ajax)으로 전송할 경우의 메소드
     @GetMapping("mIdCheck")
-    @ResponseBody           //REST 방식일 때 꼭 넣을 것.
+    @ResponseBody
     public String mIdCheck(String uid){
         log.info("mIdCheck()");
         String res = mServ.mIdCheck(uid);

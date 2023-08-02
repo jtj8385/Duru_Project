@@ -72,11 +72,11 @@ public class MemberService {
         return view;
     }
 
-    public String mLoginProc(MemberDto member, HttpSession session, RedirectAttributes rttr){
+    public String mLoginProc(MemberDto member, HttpSession session,
+                             RedirectAttributes rttr){
         log.info("mLoginProc()");
         String view = null;
         String msg = null;
-
         //DB에서 회원의 비밀번호 구하기(암호문)
         String encPwd = mDao.selectPass(member.getUid());
         //encPwd에 담겨있을 수 있는 데이터
